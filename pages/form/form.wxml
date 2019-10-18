@@ -1,0 +1,22 @@
+<!--pages/form/form.wxml-->
+<scroll-view class='scroll' scroll-y style="height:100%;">
+  <view class="container">
+  <block wx:for = "{{orderList}}" wx:key='item'>
+    <view class="list-item">
+      <view class="item-left">
+        <image class="item-img" src=""></image>
+        <text class="item-name"></text>
+      </view>
+      <view class="item-right"></view>
+    </view>
+    <view class="line"></view>
+    </block>
+  </view>
+
+  <view class="foot">
+    <view class="foot-left">
+      <text class="totalPrice">合计:{{}}</text>
+    </view>
+    <view class="foot-right">结算</view>
+  </view>
+</scroll-view>

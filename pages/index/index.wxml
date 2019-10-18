@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+  <view id='types'>
+    <block wx:for="{{menu}}" wx:key="item">
+      <view class='list-item' bindtap="navigateToFunction" data-index="{{index}}">
+        <view class='item-head'>
+          <image src="{{item.image}}" mode="scaleToFill"></image>
+        </view>
+        <view class='item-foot'>
+          {{item.name}}
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
