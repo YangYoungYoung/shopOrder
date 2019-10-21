@@ -1,15 +1,44 @@
 <!--index.wxml-->
 <view class="container">
-  <view id='types'>
-    <block wx:for="{{menu}}" wx:key="item">
-      <view class='list-item' bindtap="navigateToFunction" data-index="{{index}}">
-        <view class='item-head'>
-          <image src="{{item.image}}" mode="scaleToFill"></image>
-        </view>
-        <view class='item-foot'>
-          {{item.name}}
-        </view>
-      </view>
-    </block>
-  </view>
+
+  <scroll-view class='scroll' scroll-y style='height:100%'>
+    <view class="swiper-view">
+      <swiper style="height:300rpx;width:100%;background:#eee" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+        <!--广告banner-->
+        <block wx:for="{{ swiperList }}" wx:key="item">
+          <swiper-item>
+            <image class="banner-image" src="{{ item }}" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view id='types'>
+      <block wx:for="{{menu}}" wx:key="item">
+        <block wx:if='{{openId}}'>
+          <button class='list-item' bindtap="navigateTo" data-index="{{index}}">
+            <view class='item-head'>
+              <image src="{{item.image}}" mode="scaleToFill"></image>
+            </view>
+            <view class='item-foot'>
+              {{item.name}}
+            </view>
+          </button>
+        </block>
+        <block wx:else>
+          <button class='list-item' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" data-index="{{index}}">
+            <view class='item-head'>
+              <image src="{{item.image}}" mode="scaleToFill"></image>
+            </view>
+            <view class='item-foot'>
+              {{item.name}}
+            </view>
+          </button>
+        </block>
+      </block>
+    </view>
+
+    <!-- <view class="address">
+      <image class=""></image>
+    </view> -->
+  </scroll-view>
 </view>
