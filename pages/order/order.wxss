@@ -325,8 +325,9 @@
 }
 
 .shopCart .content .content-right .pay.enough {
-  background: #00b43c;
-  color: #fff;
+  /* background: #00b43c; */
+  background: #fada85;
+  color: #333;
 }
 
 .shopCart .ball-container .ball {

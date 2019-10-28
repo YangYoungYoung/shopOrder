@@ -16,8 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var shopId = wx.getStorageSync('shopId');
-    var openId = wx.getStorageSync('openId');
+    
     this.getOrderList();
   },
 
@@ -72,9 +71,11 @@ Page({
     })
     // console.log(this.data.toView);
   },
-  //添加到购物车
+  //添加到购物车,数量加
   addCart(e) {
     let that = this;
+    var shopId = wx.getStorageSync('shopId');
+    var tableId = wx.getStorageSync('tableId');
     let totalCount = that.data.totalCount;
     var goods = that.data.goods;
     var index = e.currentTarget.dataset.itemIndex;
@@ -113,7 +114,7 @@ Page({
       dishName: dishName,
       number: number,
       dishPrice: dishPrice,
-      openId: '1'
+      tableId: '1'
     }
     let method = "POST";
     // wx.showLoading({
@@ -156,6 +157,8 @@ Page({
   //数量减
   decreaseCart: function(e) {
     let that = this;
+    var shopId = wx.getStorageSync('shopId');
+    var tableId = wx.getStorageSync('tableId');
     var index = e.currentTarget.dataset.itemIndex;
     var parentIndex = e.currentTarget.dataset.parentindex;
     let totalCount = that.data.totalCount;
@@ -171,7 +174,7 @@ Page({
       shopId: 1,
       dishId: dishId,
      
-      openId: '1'
+      tableId: '1'
     }
     let method = "GET";
     // wx.showLoading({

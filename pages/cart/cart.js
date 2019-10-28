@@ -102,7 +102,7 @@ Page({
     let url = '/cart/select'
     var params = {
       shopId: 1,
-      openId: '1'
+      tableId: '1'
     }
     let method = "GET";
     wx.showLoading({
@@ -345,6 +345,7 @@ Page({
     for (var i = 0; i < shopList.length; i++) {
       var temp = {
         cid: shopList[i].id,
+        dishId: shopList[i].dishId,
         dishImage: shopList[i].dishImage,
         dishName: shopList[i].dishName,
         dishPrice: shopList[i].dishPrice,
@@ -354,12 +355,13 @@ Page({
       // }
     }
     // }
+    let openId = wx.getStorageSync('openId');
     var remark = that.data.textAreaBlur;
     let url = 'order/add'
     var params = {
       shopId: 1,
-      openId: '1',
-      tableId: 1,
+      openId: openId,
+      tableId: '1',
       dishArray: dishArray,
       remark: remark
     }

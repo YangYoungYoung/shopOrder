@@ -13,6 +13,10 @@ page {
   box-sizing: border-box;
   background-size: 100% 100%; /**等比例缩放*/
 }
+.banner-image{
+  width: 100%;
+  height: 300rpx;
+}
 
 #types {
   margin-top: 50rpx;
@@ -39,9 +43,11 @@ page {
   flex-direction: column;
   /* margin-top: 50rpx; */
 }
-.list-item::after{
+
+.list-item::after {
   border: none;
 }
+
 .item-foot {
   font-size: 30rpx;
   width: 100%;
@@ -58,4 +64,80 @@ page {
   width: 110rpx;
   border-radius: 100%;
   height: 100%;
+}
+
+.address {
+  display: flex;
+  flex-direction: row;
+  margin-left: 50rpx;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.address-icon {
+  width: 24rpx;
+  height: 30rpx;
+}
+
+.address-text {
+  font-size: 28rpx;
+  color: #333;
+  margin-left: 20rpx;
+}
+
+.phone_net {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 50rpx;
+}
+
+.wifi {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 50rpx;
+}
+
+.wifi-img {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.wifi-text {
+  font-size: 28rpx;
+  color: #333;
+  margin-left: 18rpx;
+}
+
+.phone {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 106rpx;
+}
+
+.shop_info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #fffb97;
+  /* margin-top: 30rpx; */
+}
+
+.info-title {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.item-img {
+  width: 678rpx;
+  height: 350rpx;
+  background-color: #fff;
+  margin-bottom: 16rpx;
 }

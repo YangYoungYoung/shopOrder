@@ -5,9 +5,9 @@
     <view class="swiper-view">
       <swiper style="height:300rpx;width:100%;background:#eee" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
         <!--广告banner-->
-        <block wx:for="{{ swiperList }}" wx:key="item">
+        <block wx:for="{{ shopInfo.banner }}" wx:key="item">
           <swiper-item>
-            <image class="banner-image" src="{{ item }}" />
+            <image class="banner-image" src="{{ item }}"  />
           </swiper-item>
         </block>
       </swiper>
@@ -37,8 +37,34 @@
       </block>
     </view>
 
-    <!-- <view class="address">
-      <image class=""></image>
-    </view> -->
+    <view class="address" bindtap="toMap">
+      <image class="address-icon" src='../images/address_icon.jpg'></image>
+      <text class="address-text">{{shopInfo.address}}</text>
+    </view>
+
+    <view class="phone_net">
+      <block wx:if="{{shopInfo.wifi}}">
+        <view class="wifi">
+          <image class="wifi-img" src='../images/wifi_icon.jpg'></image>
+          <text class="wifi-text">{{shopInfo.wifi}}</text>
+        </view>
+      </block>
+      <block wx:if='{{shopInfo.phone}}'>
+        <view class="phone" bindtap="callPhone" data-phone="{{shopInfo.phone}}">
+          <image class="wifi-img" src='../images/phone_icon.jpg'></image>
+          <text class="wifi-text">{{shopInfo.phone}}</text>
+        </view>
+      </block>
+    </view>.
+    <block wx:if="{{shopInfo.details}}">
+    <view class="shop_info">
+      <text class="info-title">店铺展示</text>
+
+      <block wx:for='{{shopInfo.details}}' wx:key='item'>
+
+        <image class="item-img" src="{{item}}" data-src="{{item}}" bindtap="previewImage"></image>
+      </block>
+    </view>
+    </block>
   </scroll-view>
 </view>

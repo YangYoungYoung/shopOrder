@@ -1,7 +1,7 @@
 <!--pages/feedback/feedback.wxml-->
 <view class="container">
   <form class="form" bindsubmit="evaSubmit" >
-    <textarea class="textarea" placeholder="输入您的备注" bindblur="bindTextAreaBlur" value="{{details}}">
+    <textarea class="textarea" placeholder="输入您的反馈意见" bindblur="bindTextAreaBlur" value="{{details}}">
     </textarea>
     <button formType="submit" class="submit">提交反馈</button>
   </form>
