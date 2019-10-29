@@ -9,14 +9,14 @@ Page({
   data: {
     goods: [],
     totalCount: 0,
-    totalPrice:0 
+    totalPrice: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
+
     this.getOrderList();
   },
 
@@ -49,6 +49,8 @@ Page({
         wx.hideLoading();
         // console.log("返回值是：" + res.data);
         let goods = res.data.data;
+        // for(var i=0;i<){}
+        goods[0].select = true;
         console.log("返回值是：" + goods);
         that.setData({
           goods: goods
@@ -65,9 +67,20 @@ Page({
       });
   },
   selectMenu: function(e) {
+    let that = this;
     var index = e.currentTarget.dataset.itemIndex;
+    let goods = that.data.goods;
+    for (var i = 0; i < goods.length; i++) {
+      if (i == index) {
+        goods[i].select = true;
+      } else {
+        goods[i].select = false;
+      }
+    }
+
     this.setData({
-      toView: 'order' + index.toString()
+      toView: 'order' + index.toString(),
+      goods: goods
     })
     // console.log(this.data.toView);
   },
@@ -173,7 +186,7 @@ Page({
     var params = {
       shopId: 1,
       dishId: dishId,
-     
+
       tableId: '1'
     }
     let method = "GET";
@@ -207,10 +220,10 @@ Page({
     // var carArray1 = this.data.carArray.filter(item => item.mark != mark);
     // carArray1.push(obj);
     // console.log(carArray1);
-  
+
   },
   //跳转到购物车
-  toCart:function(){
+  toCart: function() {
     wx.navigateTo({
       url: '../cart/cart',
     })

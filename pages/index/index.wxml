@@ -3,7 +3,7 @@
 
   <scroll-view class='scroll' scroll-y style='height:100%'>
     <view class="swiper-view">
-      <swiper style="height:300rpx;width:100%;background:#eee" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+      <swiper style="height:358rpx;width:100%;background:#eee" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
         <!--广告banner-->
         <block wx:for="{{ shopInfo.banner }}" wx:key="item">
           <swiper-item>
@@ -15,7 +15,7 @@
     <view id='types'>
       <block wx:for="{{menu}}" wx:key="item">
         <block wx:if='{{openId}}'>
-          <button class='list-item' bindtap="navigateTo" data-index="{{index}}">
+          <button  class='list-item' bindtap="navigateTo" data-index="{{index}}">
             <view class='item-head'>
               <image src="{{item.image}}" mode="scaleToFill"></image>
             </view>
