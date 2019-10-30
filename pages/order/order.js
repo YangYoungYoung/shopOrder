@@ -26,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.getToalNumber();
   },
   //获取订单列表
   getOrderList: function() {
@@ -186,7 +186,6 @@ Page({
     var params = {
       shopId: 1,
       dishId: dishId,
-
       tableId: '1'
     }
     let method = "GET";
@@ -227,6 +226,31 @@ Page({
     wx.navigateTo({
       url: '../cart/cart',
     })
+  },
+  //查看购物车数量
+  getToalNumber: function() {
+    let that = this;
+    let shopId = wx.getStorageSync('shopId');
+    let tableId = wx.getStorageSync('tableId');
+    let url = 'cart/selectNumberAndPrice'
+    var params = {
+      shopId: 1,
+      tableId: '1'
+    }
+    let method = "GET";
+
+    network.POST(url, params, method).then((res) => {
+
+      if (res.data.code == 200) {
+        console.log('减少成功');
+        let totalCount = res.data.data.result.number;
+
+        that.setData({
+          totalCount: totalCount,
+
+        })
+      }
+    });
   }
   //计算总价
   // calTotalPrice: function() {
@@ -246,4 +270,5 @@ Page({
   //     totalCount: totalCount,
   //   });
   // },
+
 })

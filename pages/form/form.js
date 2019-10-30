@@ -7,9 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    totalPrice:0,
-    hasPay:false,
-    hasView:false
+    totalPrice: 0,
+    hasPay: false,
+    hasView: false
   },
 
   /**
@@ -46,14 +46,15 @@ Page({
           console.log('res.data.data :', res.data.data);
           let orderList = res.data.data.jsonArray;
           let totalPrice = res.data.data.totalPrice;
-          if (orderList[0].status==4){
+
+          if (orderList.length > 0) {
+            if (orderList[0].status == 4) {
+              that.setData({
+                hasPay: true
+              })
+            }
             that.setData({
-              hasPay:true
-            })
-          }
-          if (orderList.length>0){
-            that.setData({
-              hasView:true
+              hasView: true
             })
           }
           that.setData({
@@ -101,11 +102,11 @@ Page({
               that.payRequest();
             },
             'fail': function(res) {
-              console.log("调起支付失败:",  res)
+              console.log("调起支付失败:", res)
               wx.showToast({
                 title: "支付失败",
                 duration: 1500,
-                icon:'loading'
+                icon: 'loading'
               })
               // common.showTip('支付失败', 'loading');
             },
@@ -152,7 +153,7 @@ Page({
       });
   },
   //暂不支付，只提交
-  toIndex:function(){
+  toIndex: function() {
     wx.redirectTo({
       url: '../index/index',
     })

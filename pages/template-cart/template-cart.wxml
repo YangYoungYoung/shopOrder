@@ -1,50 +1,55 @@
-<template name="no-goods">
-  <view class="title-box">
-    购物车空空如也～
-  </view>
-  <view class="to-index-btn" bindtap="toIndexPage">
-    去逛逛
-  </view>
-</template>
-
-<template name="cart-goods-list">
-  <scroll-view class="scroll" scroll-y="true">
-    <view class="list-top">
-      <view class="label">购物车列表</view>
-      <view class="edit-btn" hidden="{{!saveHidden}}" bindtap="editTap">编辑</view>
-      <view class="edit-btn" hidden="{{saveHidden}}" bindtap="saveTap">完成</view>
+<view class="page">
+  <template name="no-goods">
+    <view class="title-box">
+      购物车空空如也～
     </view>
-    <view class="goodsList">
-      <view class="a-gooods" wx:for="{{list}}" wx:key="{{index}}">
+    <view class="to-index-btn" bindtap="toIndexPage">
+      去逛逛
+    </view>
+  </template>
 
-        <view class="a-goods-conts {{item.active? 'active':''}}" bindtap="selectTap" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.left}}">
-          <view class="goods-info">
-            <view class="img-box">
-              <image src="{{item.dishImage}}" class="img" />
-            </view>
-            <view class="text-box">
-              <view class="goods-title">{{item.dishName}}</view>
-              <!-- <button class="goods-label" catchtap='showDialogBtn' data-index="{{index}}">口味</button> -->
-              <view class="goods-price">¥ {{item.dishPrice}}</view>
-              <view class="buy-num">
-                <view class="jian-btn {{item.number==1? 'disabled' : ''}}" catchtap="jianBtnTap" data-index="{{index}}">-</view>
-                <input type="number" value="{{item.number}}" bindinput="inputNumber" data-index="{{index}}" />
-                <view class="jia-btn {{item.number==10? 'disabled' : ''}}" catchtap="jiaBtnTap" data-index="{{index}}">+</view>
+  <template name="cart-goods-list">
+    <!-- <view class="scroll-view"> -->
+      <scroll-view class="scroll" scroll-y="true">
+        <view class="content">
+          <view class="list-top">
+            <view class="label">购物车列表</view>
+            <view class="edit-btn" hidden="{{!saveHidden}}" bindtap="editTap">编辑</view>
+            <view class="edit-btn" hidden="{{saveHidden}}" bindtap="saveTap">完成</view>
+          </view>
+          <view class="goodsList">
+            <view class="a-gooods" wx:for="{{list}}" wx:key="{{index}}">
+
+              <view class="a-goods-conts {{item.active? 'active':''}}" bindtap="selectTap" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.left}}">
+                <view class="goods-info">
+                  <view class="img-box">
+                    <image src="{{item.dishImage}}" class="img" />
+                  </view>
+                  <view class="text-box">
+                    <view class="goods-title">{{item.dishName}}</view>
+                    <!-- <button class="goods-label" catchtap='showDialogBtn' data-index="{{index}}">口味</button> -->
+                    <view class="goods-price">¥ {{item.dishPrice}}</view>
+                    <view class="buy-num">
+                      <view class="jian-btn {{item.number==1? 'disabled' : ''}}" catchtap="jianBtnTap" data-index="{{index}}">-</view>
+                      <input type="number" value="{{item.number}}" bindinput="inputNumber" data-index="{{index}}" />
+                      <view class="jia-btn {{item.number==10? 'disabled' : ''}}" catchtap="jiaBtnTap" data-index="{{index}}">+</view>
+                    </view>
+                  </view>
+                </view>
+                <view class="delete-btn" data-index="{{index}}" catchtap="delItem">
+                  删除
+                </view>
               </view>
             </view>
           </view>
-          <view class="delete-btn" data-index="{{index}}" catchtap="delItem">
-            删除
-          </view>
         </view>
-      </view>
+      </scroll-view>
+    <!-- </view> -->
+    <view class='remark'>
+    <!-- <view class='remark-title'>订单备注:</view>/ -->
+
+    <input class="remark-text" maxlength="20" placeholder="订单备注" bindinput='bindText' placeholder-style="margin-left:20rpx" value="{{remark}}"></input>
     </view>
-
-    <!-- <view class='remark'> -->
-      <!-- <view class='remark-title'>订单备注:</view>/ -->
-
-      <!-- <input class="remark-text" maxlength="10" placeholder="订单备注" bindinput='bindText' placeholder-style="margin-left:20rpx" value="{{remark}}"></input>
-    </view> -->
 
 
     <view class="jiesuan-box">
@@ -55,5 +60,7 @@
       <view class="to-pay-btn {{noSelect?'no-select':''}}" hidden="{{!saveHidden}}" bindtap="toPayOrder">确认</view>
       <view class="to-pay-btn {{noSelect?'no-select':''}}" hidden="{{saveHidden}}" bindtap="deleteSelected">删除</view>
     </view>
-  </scroll-view>
-</template>
+
+
+  </template>
+</view>

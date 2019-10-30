@@ -1,39 +1,42 @@
 <!--pages/form/form.wxml-->
-<scroll-view class='scroll' scroll-y style="height:100%;">
+<view class="page">
 
-  <view class="container">
-    <block wx:if="{{hasView}}">
-      <block wx:for="{{orderList}}" wx:key='item'>
-        <view class="list-item">
-          <view class="item-left">
-            <image class="item-img" src="{{item.dishImages}}"></image>
-            <view class="name-price">
-              <text class="item-name">{{item.dishName}}</text>
-              <text class="item-price">￥{{item.totalPrice}}</text>
+
+  <scroll-view class='scroll' scroll-y style="height:100%;">
+    <view class="container">
+      <block wx:if="{{hasView}}">
+        <block wx:for="{{orderList}}" wx:key='item'>
+          <view class="list-item">
+            <view class="item-left">
+              <image class="item-img" src="{{item.dishImages}}"></image>
+              <view class="name-price">
+                <text class="item-name">{{item.dishName}}</text>
+                <text class="item-price">￥{{item.totalPrice}}</text>
+              </view>
+
             </view>
-
+            <view class="item-right">{{item.number}}份</view>
           </view>
-          <view class="item-right">{{item.number}}份</view>
-        </view>
-        <view class="line"></view>
+          <view class="line"></view>
+        </block>
       </block>
-    </block>
 
-    <block wx:else>
-      <view class="none-view">———暂无数据———</view>
-    </block>
-
-    <view class="foot">
-      <view class="foot-left">
-        <text class="totalPrice">合计:{{totalPrice}}</text>
-      </view>
-      <block wx:if='{{hasPay}}'>
-        <view class="foot-right-haspay" disable='true'>已结算</view>
-      </block>
       <block wx:else>
-        <view class="foot-right-not" bindtap="toIndex">暂不支付</view>
-        <view class="foot-right" bindtap="payOrder">结算</view>
+        <view class="none-view">———暂无数据———</view>
       </block>
     </view>
+  </scroll-view>
+  <view class="foot">
+    <view class="foot-left">
+      <text class="totalPrice">合计:{{totalPrice}}</text>
+    </view>
+    <block wx:if='{{hasPay}}'>
+      <view class="foot-right-haspay" disable='true'>已结算</view>
+    </block>
+    <block wx:else>
+      <view class="foot-right-not" bindtap="toIndex">暂不支付</view>
+      <view class="foot-right" bindtap="payOrder">结算</view>
+    </block>
   </view>
-</scroll-view>
+
+</view>

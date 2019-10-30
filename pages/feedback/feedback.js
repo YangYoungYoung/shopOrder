@@ -31,6 +31,10 @@ Page({
     var openId = wx.getStorageSync("openId");
     var shopId = wx.getStorageSync("shopId");
     let details = that.data.details;
+    if(details.length==0){
+      common.showTip('请先输入反馈','loading');
+      return;
+    }
     let url = "feedback/add"
     let method = "GET"
     var params = {
@@ -45,6 +49,9 @@ Page({
         wx.hideLoading();
         if (res.data.code == 200) {
           common.showTip('反馈成功', 'success');
+          that.setData({
+            details: ''
+          });
         }
       })
   }
