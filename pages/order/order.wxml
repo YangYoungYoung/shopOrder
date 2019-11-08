@@ -28,10 +28,10 @@
               <view class="cartControl">
                 <view name="fade">
                   <view class="cart-decrease" wx:if="{{productList.number > 0}}" data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap="decreaseCart">
-                    <view class="inner iconfont icon-jian" style="font-size:24px;color:#00A0DC;"></view>
+                    <view class="inner iconfont icon-jian" style="font-size:24px;color:#fada85;"></view>
                   </view>
                   <view class="cart-count" wx:if="{{productList.number > 0 }}">{{productList.number}}</view>
-                  <view class=" iconfont icon-jia cart-add " style="color:#00A0DC; " data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap="addCart"></view>
+                  <view class=" iconfont icon-jia cart-add " style="color:#fada85; " data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap="addCart"></view>
                 </view>
               </view>
             </view>

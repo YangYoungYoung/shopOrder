@@ -69,12 +69,15 @@ Page({
     var that = this;
     var money = that.data.totalPrice * 100;
     var openId = wx.getStorageSync("openId")
+    var shopId = wx.getStorageSync('shopId');
     let url = "weixin/pay"
     var params = {
+      // shopId:shopId,
+      shopId:1,
       openId: openId,
       // orderId: orderid,
-      money: money
-      // money:1
+      // money: money
+      money:1
     }
     let method = "GET";
 
@@ -89,7 +92,7 @@ Page({
             'timeStamp': res.data.data.timeStamp,
             'nonceStr': res.data.data.nonceStr,
             'package': res.data.data.package,
-            'signType': 'RSA',
+            'signType': res.data.data.signType,
             'paySign': res.data.data.paySign,
             'success': function(res) {
               // console.log("调起支付成功")

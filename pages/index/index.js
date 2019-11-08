@@ -45,6 +45,10 @@ Page({
    */
   onLoad: function(options) {
 
+    /****
+     * 这里要获取shopId和tableId
+     * 
+     * **/
     this.getShopInfo();
   },
   onShow: function(e) {
@@ -100,10 +104,12 @@ Page({
   getOP: function(res) { //提交用户信息 获取用户id
     let that = this;
     let code = that.data.code;
-    let url = "authorize/getOpenId?code=" + code
+    let shopId = that.data.shopId;
+    let url = "authorize/getOpenId";
 
     var params = {
-      // code:code
+      code: code,
+      shopId: 1
     }
     let method = "POST";
     wx.showLoading({

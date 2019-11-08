@@ -28,7 +28,7 @@
   </scroll-view>
   <view class="foot">
     <view class="foot-left">
-      <text class="totalPrice">合计:{{totalPrice}}</text>
+      <text class="totalPrice">合计:{{totalPrice}}元</text>
     </view>
     <block wx:if='{{hasPay}}'>
       <view class="foot-right-haspay" disable='true'>已结算</view>
