@@ -155,10 +155,43 @@ Page({
         })
       });
   },
-  //暂不支付，只提交
+  //暂不支付，只提交,打印订单
   toIndex: function() {
-    wx.redirectTo({
-      url: '../index/index',
-    })
+    var that = this;
+    var orderId = wx.getStorageSync("orderId");
+    var shopId = wx.getStorageSync("shopId");
+    // var order_id = "25767795778125825";
+    // var money = that.data.totalPrice;
+    let url = "print/sendMsgAll"
+    let method = "GET"
+    var params = {
+      // description: money,
+      orderId: orderId,
+      shopId: 1
+    }
+    wx.showLoading({
+      title: '加载中...',
+    }),
+      network.POST(url, params, method).then((res) => {
+        wx.hideLoading();
+        // console.log("支付回调：" + res.data);  
+        if (res.data.code == 200) {
+          wx.redirectTo({
+            url: '../index/index',
+          })
+        }
+        else{
+          let msg = res.data.errMsg;
+          common.showTip('msg','loading');
+        }
+      }).catch((errMsg) => {
+        wx.hideLoading();
+        // console.log(errMsg); //错误提示信息
+        wx.showToast({
+          title: '网络错误',
+          icon: 'loading',
+          duration: 1500,
+        })
+      });
   }
 })

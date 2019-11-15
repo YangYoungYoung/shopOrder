@@ -1,0 +1,16 @@
+<!--pages/welcome/welcome.wxml-->
+<view class="container">
+  <swiper style="height:100%;width:100%;background:#eee" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+    <!--广告banner-->
+    <block wx:for="{{ welcomeList}}" wx:key="item">
+      <swiper-item>
+        <block wx:if="{{index==3}}">
+          <image class="banner-image" src="{{ item }}" bindtap="toIndex" />
+        </block>
+        <block wx:el>
+          <image class="banner-image" src="{{ item }}" />
+    </block>
+    </swiper-item>
+    </block>
+  </swiper>
+</view>
